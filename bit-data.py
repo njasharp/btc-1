@@ -6,7 +6,7 @@ from scipy.signal import argrelextrema
 import cryptocompare
 
 cryptocompare.cryptocompare._set_api_key_parameter('YOUR_CRYPTOCOMPARE_API_KEY')  # Replace with your CryptoCompare API key
-# Set up a Streamlit slider for selecting the number of days
+
 
 
 def get_crypto_data(symbol, currency='USD', days=30):
@@ -172,6 +172,7 @@ st.title("Cryptocurrency Price Analysis")
 crypto_symbol = st.selectbox("Select Cryptocurrency Symbol", options=["BTC", "ETH", "LTC", "XRP", "ADA"])
 st.divider()
 
+# Set up a Streamlit slider for selecting the number of days
 delta = st.slider('Select number of days', 1, 365, value=30)
 
 
