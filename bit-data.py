@@ -6,9 +6,11 @@ from scipy.signal import argrelextrema
 import cryptocompare
 
 cryptocompare.cryptocompare._set_api_key_parameter('YOUR_CRYPTOCOMPARE_API_KEY')  # Replace with your CryptoCompare API key
+# Set up a Streamlit slider for selecting the number of days
 
-def get_crypto_data(symbol, currency='USD'):
-    hist = cryptocompare.get_historical_price_day(symbol, currency=currency, limit=365)
+
+def get_crypto_data(symbol, currency='USD', days=30):
+    hist = cryptocompare.get_historical_price_day(symbol, currency=currency, limit=delta)
     df = pd.DataFrame(hist)
     df['time'] = pd.to_datetime(df['time'], unit='s')
     df.set_index('time', inplace=True)
@@ -168,6 +170,10 @@ def plot_crypto(symbol):
 
 st.title("Cryptocurrency Price Analysis")
 crypto_symbol = st.selectbox("Select Cryptocurrency Symbol", options=["BTC", "ETH", "LTC", "XRP", "ADA"])
+st.divider()
+
+delta = st.slider('Select number of days', 1, 365, value=30)
+
 
 if crypto_symbol:
     plot_crypto(crypto_symbol)
