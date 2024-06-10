@@ -169,8 +169,10 @@ def plot_crypto(symbol):
     plot_psychological_trend_analysis()
 
 st.title("Cryptocurrency Price Analysis")
-crypto_symbol = st.selectbox("Select Cryptocurrency Symbol", options=["BTC", "ETH", "LTC", "XRP", "ADA"])
 st.divider()
+
+crypto_symbol = st.selectbox("Select Cryptocurrency Symbol", options=["BTC", "ETH", "LTC", "XRP", "ADA"])
+
 
 # Set up a Streamlit slider for selecting the number of days
 delta = st.slider('Select number of days', 1, 365, value=30)
